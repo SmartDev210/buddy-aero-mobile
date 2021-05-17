@@ -141,5 +141,9 @@
       <Project>{EA71CEE5-90B5-422F-B789-1ED3A22A36BF}</Project>
       <Name>weavy-mobile</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Weavy.WebView.Plugin.Forms\Weavy.WebView.Plugin.Forms.csproj">
+      <Project>{7ae6e2b1-10c8-418c-9bf1-1c243f149259}</Project>
+      <Name>Weavy.WebView.Plugin.Forms</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

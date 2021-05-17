@@ -40,7 +40,14 @@
     </TabBar>
 
     <TabBar>
+        <ShellContent Title="Spaces" Icon="icon_about.png" Route="SpacesPage" ContentTemplate="{DataTemplate local:SpacesPage}" />
+        <ShellContent Title="Messengers" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:MessengersPage}" />
+    </TabBar>
+    
+    <!--
+    <TabBar>
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
         <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
     </TabBar>
+    -->
 </Shell>

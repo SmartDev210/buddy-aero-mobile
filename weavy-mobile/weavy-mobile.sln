@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weavy-mobile.iOS", "weavy-m
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weavy-mobile", "weavy-mobile\weavy-mobile\weavy-mobile.csproj", "{8236C430-8398-4AB9-BB88-D8BB4E257E12}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weavy.WebView.Plugin.Forms", "weavy-mobile\Weavy.WebView.Plugin.Forms\Weavy.WebView.Plugin.Forms.csproj", "{7AE6E2B1-10C8-418C-9BF1-1C243F149259}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,18 @@ Global
 		{8236C430-8398-4AB9-BB88-D8BB4E257E12}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{8236C430-8398-4AB9-BB88-D8BB4E257E12}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{8236C430-8398-4AB9-BB88-D8BB4E257E12}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Release|iPhone.Build.0 = Release|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{7AE6E2B1-10C8-418C-9BF1-1C243F149259}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

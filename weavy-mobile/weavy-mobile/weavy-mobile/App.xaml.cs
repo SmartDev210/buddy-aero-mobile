@@ -8,6 +8,7 @@ namespace WeavyMobile
 {
     public partial class App : Application
     {
+        public static string JwtToken { get; set; }
 
         public App()
         {

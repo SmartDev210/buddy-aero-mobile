@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WeavyMobile.Constants
+namespace WeavyMobile
 {
-    class Constants
+    public class Constants
     {
-        
+        public const string WeavyUrl = "https://weavy-sr0.conveyor.cloud";
+        public const string ApiUrl = "https://findparts.conveyor.cloud";
     }
 }
