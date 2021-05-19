@@ -10,7 +10,7 @@ namespace WeavyMobile.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public Command LoginCommand { get; }
+        public Command LoginCommand { get; }        
 
         public string Email { get; set; }
         public string Password { get; set; }

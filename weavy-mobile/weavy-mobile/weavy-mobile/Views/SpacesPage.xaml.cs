@@ -33,6 +33,7 @@ namespace WeavyMobile.Views
 
             weavyWebView.SignedOut += async (sender, args) =>
             {
+                Preferences.Remove("loggedin");
                 await Shell.Current.GoToAsync("//LoginPage");
             };
             // listen to badge updated event

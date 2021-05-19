@@ -36,7 +36,11 @@ namespace WeavyMobile.Views
             {
 
             };
-
+            weavyMessenger.SignedOut += async (sender, args) =>
+            {
+                Preferences.Remove("loggedin");
+                await Shell.Current.GoToAsync("//LoginPage");
+            };
             weavyMessenger.LinkClicked += (sender, args) =>
             {
                 Console.WriteLine("Link clicked...", args.Url);
