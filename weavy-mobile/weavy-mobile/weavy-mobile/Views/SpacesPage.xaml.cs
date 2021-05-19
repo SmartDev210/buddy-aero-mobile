@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 
 namespace WeavyMobile.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]    
     public partial class SpacesPage : ContentPage
     {
         private SpacesViewModel viewModel;
@@ -30,7 +30,7 @@ namespace WeavyMobile.Views
             {
                 weavyWebView.Load(Constants.WeavyUrl);
             };
-
+            
             weavyWebView.SignedOut += async (sender, args) =>
             {
                 Preferences.Remove("loggedin");
@@ -60,13 +60,13 @@ namespace WeavyMobile.Views
             weavyWebView.LoadFinished += (sender, args) =>
             {
                 Console.WriteLine("Load webview finished...");
-
+                
                 // example of getting current logged in user
                 weavyWebView.GetUser((data) => {
                     var user = JsonConvert.DeserializeObject<User>(data);
                 });
             };
-
+            
             // an error occurred when loading the page
             weavyWebView.LoadError += (sender, args) =>
             {
@@ -82,7 +82,10 @@ namespace WeavyMobile.Views
             MessagingCenter.Subscribe<App>(this, "APP_RESUME", (s) => {
                 weavyWebView.Resume();
             });
-
+            MessagingCenter.Subscribe<LoginPage>(this, "TOKEN_REFRESH", (s) => {
+                weavyWebView.AuthenticationToken = App.JwtToken;
+                weavyWebView.Reload();
+            });
         }
     }
 }

@@ -40,7 +40,7 @@
     </TabBar>
 
     <TabBar>
-        <ShellContent Title="Spaces" Icon="icon_about.png" Route="SpacesPage" ContentTemplate="{DataTemplate local:SpacesPage}" />
+        <ShellContent x:Name="spacesTab" Title="Spaces" Icon="icon_about.png" Route="SpacesPage" ContentTemplate="{DataTemplate local:SpacesPage}" />
         <ShellContent Title="Messengers" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:MessengersPage}" />
     </TabBar>
     

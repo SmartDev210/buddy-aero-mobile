@@ -57,7 +57,11 @@ namespace WeavyMobile.Views
                     var user = JsonConvert.DeserializeObject<User>(data);
                 });
             };
-            
+
+            MessagingCenter.Subscribe<LoginPage>(this, "TOKEN_REFRESH", (s) => {
+                weavyMessenger.AuthenticationToken = App.JwtToken;
+                weavyMessenger.Reload();
+            });
         }
     }
 }

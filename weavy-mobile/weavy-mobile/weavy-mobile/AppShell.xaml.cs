@@ -12,17 +12,11 @@ namespace WeavyMobile
         public AppShell()
         {
             InitializeComponent();
-        }
-        protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-
             var loggedIn = Preferences.Get("loggedin", false);
             if (loggedIn)
-            {
-                await Shell.Current.GoToAsync($"//{nameof(SpacesPage)}");
+            {   
+                this.CurrentItem = spacesTab;
             }
         }
-
     }
 }

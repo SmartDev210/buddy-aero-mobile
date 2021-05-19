@@ -38,6 +38,9 @@ namespace WeavyMobile.Views
                 {
                     App.JwtToken = accessToken;
                     Preferences.Set("loggedin", true);
+
+                    MessagingCenter.Send(this, "TOKEN_REFRESH");
+
                     await Shell.Current.GoToAsync($"//{nameof(SpacesPage)}");
                 }
             } catch (Exception)
