@@ -5,6 +5,7 @@
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
     <AssemblyName>weavy-mobile</AssemblyName>
     <RootNamespace>WeavyMobile</RootNamespace>
+    <ReleaseVersion>0.2</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>

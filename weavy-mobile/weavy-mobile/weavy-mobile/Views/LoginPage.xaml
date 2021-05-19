@@ -8,13 +8,8 @@
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="40,10,40,10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <Label Text="Elena's List"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Start"
-                   FontSize="24"
-                   Margin="0, 100, 0, 100"
-                   />
-            <Image Source="logo.png" WidthRequest="128"/>
+            
+            <Image Source="logo.png" WidthRequest="128" Margin="0, 100, 0, 100"/>
             <StackLayout VerticalOptions="CenterAndExpand">
                 <Button VerticalOptions="EndAndExpand" Text="Login" Clicked="LoginWithWeb"/>
             </StackLayout>
