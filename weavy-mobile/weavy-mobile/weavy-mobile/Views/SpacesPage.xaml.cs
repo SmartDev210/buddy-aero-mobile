@@ -28,6 +28,7 @@ namespace WeavyMobile.Views
             // load the web view after init is complete. Note that the uri property is set in the .xaml view
             weavyWebView.InitCompleted += (s, a) =>
             {
+                viewModel.IsBusy = true;
                 weavyWebView.Load(Constants.WeavyUrl);
             };
             
@@ -59,6 +60,8 @@ namespace WeavyMobile.Views
             // web view has finished loading page
             weavyWebView.LoadFinished += (sender, args) =>
             {
+                viewModel.IsBusy = false;
+
                 Console.WriteLine("Load webview finished...");
                 
                 // example of getting current logged in user

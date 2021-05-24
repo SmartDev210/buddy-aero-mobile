@@ -120,6 +120,7 @@
     </ImageAsset>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\1024.png" />
+    <BundleResource Include="Resources\loading-logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

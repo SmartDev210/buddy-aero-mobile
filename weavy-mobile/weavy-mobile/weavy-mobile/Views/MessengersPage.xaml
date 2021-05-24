@@ -11,12 +11,25 @@
             <Color x:Key="LightTextColor">#999999</Color>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                     AbsoluteLayout.LayoutFlags="All"
+                     VerticalOptions="FillAndExpand"
+                     IsVisible="{Binding IsBusy}"
+                     BackgroundColor="#30000000">
+            <ActivityIndicator VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand"
+                               IsRunning="{Binding IsBusy}"
+                               Color="Black"/>
+        </StackLayout>
+        <Grid AbsoluteLayout.LayoutBounds="0,0,1,1"
+              AbsoluteLayout.LayoutFlags="All">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <w:WeavyWebView x:Name="weavyMessenger" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></w:WeavyWebView>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <w:WeavyWebView x:Name="weavyMessenger" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></w:WeavyWebView>
-
-    </Grid>
+        </Grid>
+    </AbsoluteLayout>
+    
 </ContentPage>

@@ -29,6 +29,7 @@ namespace WeavyMobile.Views
             // load the web view after init is complete. Set the url to the /messenger
             weavyMessenger.InitCompleted += (sender, args) =>
             {
+                viewModel.IsBusy = true;
                 weavyMessenger.Load($"{Constants.WeavyUrl}/messenger");
             };
 
@@ -50,6 +51,7 @@ namespace WeavyMobile.Views
             // web view has finished loading page
             weavyMessenger.LoadFinished += (sender, args) =>
             {
+                viewModel.IsBusy = false;
                 Console.WriteLine("Load webview finished...");
 
                 // exampleof getting current logged in user
