@@ -2,7 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:WeavyMobile.Views"
-       Title="weavy_mobile"
+       Title="ElenasList"
        x:Class="WeavyMobile.AppShell">
 
     <!--

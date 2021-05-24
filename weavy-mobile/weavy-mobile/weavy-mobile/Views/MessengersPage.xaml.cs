@@ -56,7 +56,27 @@ namespace WeavyMobile.Views
 
                 // exampleof getting current logged in user
                 weavyMessenger.GetUser((data) => {
-                    var user = JsonConvert.DeserializeObject<User>(data);
+                    try
+                    {
+                        var user = JsonConvert.DeserializeObject<User>(data);
+                    } catch (Exception)
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            await Shell.Current.GoToAsync("//LoginPage");
+                            await Shell.Current.DisplayAlert("", "Failed to login to weavy. Please try again later!", "OK");
+                        });
+                    }
+                });
+            };
+
+            weavyMessenger.SSOError += (sender, args) =>
+            {
+                Preferences.Remove("loggedin");
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await Shell.Current.GoToAsync("//LoginPage");
+                    await Shell.Current.DisplayAlert("", "Failed to login to weavy. Please try again later!", "OK");
                 });
             };
 

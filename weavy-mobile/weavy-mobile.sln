@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weavy-mobile.Android", "weavy-mobile\weavy-mobile.Android\weavy-mobile.Android.csproj", "{8A44C82E-11A5-4983-968C-4A5AA827A5FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weavy-mobile.iOS", "weavy-mobile\weavy-mobile.iOS\weavy-mobile.iOS.csproj", "{6E8C836D-D342-45A4-AC78-B71B59DD374A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElenasList.iOS", "weavy-mobile\weavy-mobile.iOS\ElenasList.iOS.csproj", "{6E8C836D-D342-45A4-AC78-B71B59DD374A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weavy-mobile", "weavy-mobile\weavy-mobile\weavy-mobile.csproj", "{8236C430-8398-4AB9-BB88-D8BB4E257E12}"
 EndProject
@@ -96,5 +96,9 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		version = 0.2
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.StandardHeader = $2
 	EndGlobalSection
 EndGlobal
