@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>Elena&apos;s List</string>
+	<string>Aviation Back-Channel</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.elenaslist.ElenasMobile</string>
 	<key>CFBundleVersion</key>
@@ -31,7 +31,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
-	<string>ElenasList</string>
+	<string>Aviation Back Channel</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

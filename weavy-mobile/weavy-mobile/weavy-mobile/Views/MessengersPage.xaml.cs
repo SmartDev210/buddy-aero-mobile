@@ -61,6 +61,7 @@ namespace WeavyMobile.Views
                         var user = JsonConvert.DeserializeObject<User>(data);
                     } catch (Exception)
                     {
+                        Preferences.Remove("loggedin");
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await Shell.Current.GoToAsync("//LoginPage");

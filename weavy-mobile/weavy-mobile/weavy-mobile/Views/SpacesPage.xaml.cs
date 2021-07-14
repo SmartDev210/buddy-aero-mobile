@@ -72,6 +72,7 @@ namespace WeavyMobile.Views
                     }
                     catch (Exception)
                     {
+                        Preferences.Remove("loggedin");
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await Shell.Current.GoToAsync("//LoginPage");
