@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "weavy-mobile.Android", "weavy-mobile\weavy-mobile.Android\weavy-mobile.Android.csproj", "{8A44C82E-11A5-4983-968C-4A5AA827A5FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElenasList.Android", "weavy-mobile\weavy-mobile.Android\ElenasList.Android.csproj", "{8A44C82E-11A5-4983-968C-4A5AA827A5FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElenasList.iOS", "weavy-mobile\weavy-mobile.iOS\ElenasList.iOS.csproj", "{6E8C836D-D342-45A4-AC78-B71B59DD374A}"
 EndProject

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Weavy.WebView.Plugin.Forms.Models;
+using WeavyMobile.Services;
 using WeavyMobile.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -35,7 +36,12 @@ namespace WeavyMobile.Views
 
             weavyMessenger.BadgeUpdated += (sender, args) =>
             {
-
+                
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    DependencyService.Get<INotificationService>().ResetBadgeCount(args.Conversations + args.Notifications);
+                });
+                
             };
             weavyMessenger.SignedOut += async (sender, args) =>
             {

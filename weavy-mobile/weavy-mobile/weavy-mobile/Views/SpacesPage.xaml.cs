@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Weavy.WebView.Plugin.Forms.Models;
+using WeavyMobile.Services;
 using WeavyMobile.ViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -42,6 +43,13 @@ namespace WeavyMobile.Views
             {
                 Console.WriteLine(args.Conversations); // messenger notifications
                 Console.WriteLine(args.Notifications); // all other notifications
+
+                
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    DependencyService.Get<INotificationService>().ResetBadgeCount(args.Conversations + args.Notifications);
+                });
+                
             };
 
             // web view is loading page
@@ -63,12 +71,17 @@ namespace WeavyMobile.Views
                 viewModel.IsBusy = false;
 
                 Console.WriteLine("Load webview finished...");
-                
+
                 // example of getting current logged in user
                 weavyWebView.GetUser((data) => {
                     try
                     {
                         var user = JsonConvert.DeserializeObject<User>(data);
+                        var tag = $"uid:{user.Guid.ToString()}";
+                        
+                        Task.Run(() => {
+                            DependencyService.Get<INotificationService>().Register(tag);
+                        });
                     }
                     catch (Exception)
                     {

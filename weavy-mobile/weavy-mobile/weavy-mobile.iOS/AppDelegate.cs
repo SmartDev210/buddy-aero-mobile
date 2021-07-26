@@ -4,6 +4,8 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using WindowsAzure.Messaging.NotificationHubs;
+using UserNotifications;
 
 namespace WeavyMobile.iOS
 {
@@ -25,7 +27,47 @@ namespace WeavyMobile.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
+
+            //RegisterForRemoteNotifications();
+
+            
+            // Set the Message listener
+            MSNotificationHub.SetDelegate(new AzureNotificationHubListener());
+
+            //Start the SDK
+            MSNotificationHub.Start(Constants.ListenConnectionString, Constants.NotificationHubName);
+            
             return base.FinishedLaunching(app, options);
+        }
+
+        void RegisterForRemoteNotifications()
+        {
+            // register for remote notifications based on system version
+            if (UIDevice.CurrentDevice.CheckSystemVersion(10, 0))
+            {
+                UNUserNotificationCenter.Current.RequestAuthorization(UNAuthorizationOptions.Alert |
+                    UNAuthorizationOptions.Sound |
+                    UNAuthorizationOptions.Sound,
+                    (granted, error) =>
+                    {
+                        if (granted)
+                            InvokeOnMainThread(UIApplication.SharedApplication.RegisterForRemoteNotifications);
+                    });
+            }
+            else if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+            {
+                var pushSettings = UIUserNotificationSettings.GetSettingsForTypes(
+                UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound,
+                new NSSet());
+
+                UIApplication.SharedApplication.RegisterUserNotificationSettings(pushSettings);
+                UIApplication.SharedApplication.RegisterForRemoteNotifications();
+            }
+            else
+            {
+                UIRemoteNotificationType notificationTypes = UIRemoteNotificationType.Alert | UIRemoteNotificationType.Badge | UIRemoteNotificationType.Sound;
+                UIApplication.SharedApplication.RegisterForRemoteNotificationTypes(notificationTypes);
+            }
         }
 
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -40,6 +82,30 @@ namespace WeavyMobile.iOS
             if (Xamarin.Essentials.Platform.ContinueUserActivity(application, userActivity, completionHandler))
                 return true;
             return base.ContinueUserActivity(application, userActivity, completionHandler);
+        }
+        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        {
+            NSUserDefaults.StandardUserDefaults["token"] = deviceToken;
+            
+        }
+        public override void OnActivated(UIApplication uiApplication)
+        {
+            // UIApplication.SharedApplication.ApplicationIconBadgeNumber = 0;
+            base.OnActivated(uiApplication);
+        }
+    }
+
+    public class AzureNotificationHubListener : MSNotificationHubDelegate
+    {
+        public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
+        {
+            // this sample assumes {aps: { alert: { title: "hello", body: "world" } } } 
+            var alertTitle = message.Title ?? "Aviation Back-Channel";
+            var alertBody = message.Body;
+                        
+            var myAlert = UIAlertController.Create(alertTitle, alertBody, UIAlertControllerStyle.Alert);
+            myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
         }
     }
 }
