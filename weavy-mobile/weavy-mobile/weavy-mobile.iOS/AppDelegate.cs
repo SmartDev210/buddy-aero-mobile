@@ -99,13 +99,20 @@ namespace WeavyMobile.iOS
     {
         public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
         {
-            // this sample assumes {aps: { alert: { title: "hello", body: "world" } } } 
             var alertTitle = message.Title ?? "Aviation Back-Channel";
             var alertBody = message.Body;
-                        
-            var myAlert = UIAlertController.Create(alertTitle, alertBody, UIAlertControllerStyle.Alert);
-            myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-            UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
+
+            // this sample assumes {aps: { alert: { title: "hello", body: "world" } } }
+            if (UIApplication.SharedApplication.ApplicationState == UIApplicationState.Active
+                && AppShell.Current?.CurrentItem?.CurrentItem?.Title == "Messengers"
+                && alertBody.Contains(":")) {
+
+            } else
+            {
+                var myAlert = UIAlertController.Create(alertTitle, alertBody, UIAlertControllerStyle.Alert);
+                myAlert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+                UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(myAlert, true, null);
+            }
         }
     }
 }
