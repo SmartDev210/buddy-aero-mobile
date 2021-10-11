@@ -8,7 +8,7 @@ namespace WeavyMobile.ViewModels
     {
         public SpacesViewModel()
         {
-            Title = "Spaces";
+            Title = "App";
         }
     }
 }

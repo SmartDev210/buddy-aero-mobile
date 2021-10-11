@@ -12,7 +12,7 @@ namespace WeavyMobile
         //public const string WeavyUrl = "https://weavy-sr0.conveyor.cloud";
         //public const string ApiUrl = "https://findparts.conveyor.cloud";
 
-        public const string ListenConnectionString = "Endpoint=sb://backchannel.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=HPTsg9cGsQ1xAAcKNGmSJHaM/bPq1EW7aXxbxpdjnVc=";
-        public const string NotificationHubName = "backchannel-notificationhub";
+        public const string ListenConnectionString = "Endpoint=sb://AvDBAero.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=ULvn4QrxphhkjbbZdoToGxn8hpv8n2CQbtxiKbb77/A=";
+        public const string NotificationHubName = "AvDBAero";
     }
 }
