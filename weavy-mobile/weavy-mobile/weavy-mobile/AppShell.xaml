@@ -16,13 +16,13 @@
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
                 <Setter Property="Shell.ForegroundColor" Value="White" />
-                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="Gray" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="Shell.TabBarForegroundColor" Value="DarkGray"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Gray"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="Black"/>
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
@@ -40,7 +40,7 @@
     </TabBar>
 
     <TabBar>
-        <ShellContent x:Name="spacesTab" Title="Spaces" Icon="icon_about.png" Route="SpacesPage" ContentTemplate="{DataTemplate local:SpacesPage}" />
+        <ShellContent x:Name="spacesTab" Title="App" Icon="icon_about.png" Route="SpacesPage" ContentTemplate="{DataTemplate local:SpacesPage}" />
         <ShellContent Title="Messengers" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:MessengersPage}" />
     </TabBar>
     
