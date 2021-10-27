@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "715377266942",
+    "project_id": "my-project-1628394511925",
+    "storage_bucket": "my-project-1628394511925.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715377266942:android:017965750a80b38c9115af",
+        "android_client_info": {
+          "package_name": "com.elenaslist.ElenasMobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715377266942-0iuncrncaj4uoabtgal12p61e08qk1hn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIZSq9XvLEvEF71Gkye3vL6GZzPfjKCIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715377266942-0iuncrncaj4uoabtgal12p61e08qk1hn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

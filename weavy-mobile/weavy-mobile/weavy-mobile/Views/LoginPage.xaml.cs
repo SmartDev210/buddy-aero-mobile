@@ -40,8 +40,8 @@ namespace WeavyMobile.Views
                     Preferences.Set("loggedin", true);
 
                     MessagingCenter.Send(this, "TOKEN_REFRESH");
-
-                    await Shell.Current.GoToAsync($"//{nameof(SpacesPage)}");
+                    
+                    await Shell.Current.GoToAsync("//SpacesPage");
                 }
             } catch (Exception)
             {

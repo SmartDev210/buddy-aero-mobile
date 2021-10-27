@@ -99,7 +99,7 @@ namespace WeavyMobile.iOS
     {
         public override void DidReceivePushNotification(MSNotificationHub notificationHub, MSNotificationHubMessage message)
         {
-            var alertTitle = message.Title ?? "Aviation Back-Channel";
+            var alertTitle = message.Title ?? "Buddy.aero";
             var alertBody = message.Body;
 
             // this sample assumes {aps: { alert: { title: "hello", body: "world" } } }
