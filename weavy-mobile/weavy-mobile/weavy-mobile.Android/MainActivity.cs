@@ -70,7 +70,7 @@ namespace weavy_mobile.Droid
             var notificationBuilder = new NotificationCompat.Builder(Application.Context, MainActivity.CHANNEL_ID);
 
             notificationBuilder.SetContentTitle(message.Title)
-                        .SetSmallIcon(ElenasList.Droid.Resource.Drawable.ic_launcher)
+                        .SetSmallIcon(ElenasList.Droid.Resource.Mipmap.icon_notification)
                         .SetContentText(message.Body)
                         .SetAutoCancel(true)
                         .SetShowWhen(false)
