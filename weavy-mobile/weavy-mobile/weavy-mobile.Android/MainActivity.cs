@@ -14,6 +14,7 @@ using Firebase.Iid;
 using Firebase.Messaging;
 using Xamarin.Essentials;
 using Constants = WeavyMobile.Constants;
+using Android.Graphics;
 
 namespace weavy_mobile.Droid
 {
@@ -21,7 +22,7 @@ namespace weavy_mobile.Droid
     [Activity(Label = "Buddy.aero", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        internal static readonly string CHANNEL_ID = "my_notification_channel";
+        internal static readonly string CHANNEL_ID = "buddy_channel";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -30,9 +31,10 @@ namespace weavy_mobile.Droid
             // push notification
             // https://docs.microsoft.com/en-us/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm
 
+            
             // Listen for push notifications
             NotificationHub.SetListener(new AzureNotificationHubListener());
-
+            
             // Start the API
             NotificationHub.Start(this.Application, Constants.NotificationHubName, Constants.ListenConnectionString);
 
@@ -84,10 +86,101 @@ namespace weavy_mobile.Droid
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     public class MyFirebaseMessagingService : FirebaseMessagingService
     {
+        bool channelInitialized = false;
         public override void OnNewToken(string p0)
         {
             base.OnNewToken(p0);
             Preferences.Set("token", p0);
+        }
+        public override void OnMessageReceived(RemoteMessage p0)
+        {   
+            string message = "";
+            if (p0.Data.TryGetValue("message", out message))
+            {
+                if (AndroidNotificationManager.Instance == null)
+                    new AndroidNotificationManager();
+
+                ActivityManager.RunningAppProcessInfo appProcessInfo = new ActivityManager.RunningAppProcessInfo();
+                ActivityManager.GetMyMemoryState(appProcessInfo);
+                if ((appProcessInfo.Importance == Importance.Foreground || appProcessInfo.Importance == Importance.Visible)
+                    && AppShell.Current?.CurrentItem?.CurrentItem?.Title == "Messenger"
+                    && message.Contains(":"))
+                { 
+                } else if (message.Contains(":"))
+                {
+                    AndroidNotificationManager.Instance.Show("Message", message);
+                } else
+                {
+                    AndroidNotificationManager.Instance.Show("Space", message);
+                }
+            }
+        }
+    }
+    public class AndroidNotificationManager
+    {
+        const string channelId = "buddy_channel";
+        const string channelName = "Default";
+        const string channelDescription = "The default channel for notifications.";
+
+        public const string TitleKey = "title";
+        public const string MessageKey = "message";
+
+        bool channelInitialized = false;
+        int messageId = 0;
+        int pendingIntentId = 0;
+
+        NotificationManager manager;
+
+        public event EventHandler NotificationReceived;
+
+        public static AndroidNotificationManager Instance { get; private set; }
+
+        public AndroidNotificationManager() => Initialize();
+
+        public void Initialize()
+        {
+            if (Instance == null)
+            {
+                CreateNotificationChannel();
+                Instance = this;
+            }
+        }
+
+        public void Show(string title, string message)
+        {
+            Intent intent = new Intent(Application.Context, typeof(MainActivity));
+            intent.PutExtra(TitleKey, title);
+            intent.PutExtra(MessageKey, message);
+
+            PendingIntent pendingIntent = PendingIntent.GetActivity(Application.Context, pendingIntentId++, intent, PendingIntentFlags.UpdateCurrent);
+
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(Application.Context, channelId)
+                .SetContentIntent(pendingIntent)
+                .SetContentTitle(title)
+                .SetContentText(message)
+                .SetLargeIcon(BitmapFactory.DecodeResource(Application.Context.Resources, ElenasList.Droid.Resource.Mipmap.icon_notification))
+                .SetSmallIcon(ElenasList.Droid.Resource.Mipmap.icon_notification)
+                .SetDefaults((int)NotificationDefaults.Sound | (int)NotificationDefaults.Vibrate);
+
+            Notification notification = builder.Build();
+            manager.Notify(messageId++, notification);
+        }
+
+        void CreateNotificationChannel()
+        {
+            manager = (NotificationManager)Application.Context.GetSystemService(Application.NotificationService);
+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+            {
+                var channelNameJava = new Java.Lang.String(channelName);
+                var channel = new NotificationChannel(channelId, channelNameJava, NotificationImportance.Default)
+                {
+                    Description = channelDescription
+                };
+                manager.CreateNotificationChannel(channel);
+            }
+
+            channelInitialized = true;
         }
     }
 }

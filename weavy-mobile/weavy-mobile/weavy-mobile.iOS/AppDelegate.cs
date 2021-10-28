@@ -104,7 +104,7 @@ namespace WeavyMobile.iOS
 
             // this sample assumes {aps: { alert: { title: "hello", body: "world" } } }
             if (UIApplication.SharedApplication.ApplicationState == UIApplicationState.Active
-                && AppShell.Current?.CurrentItem?.CurrentItem?.Title == "Messengers"
+                && AppShell.Current?.CurrentItem?.CurrentItem?.Title == "Messenger"
                 && alertBody.Contains(":")) {
 
             } else

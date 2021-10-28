@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.elenaslist.ElenasMobile" android:installLocation="auto">
 	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
-	<application android:label="ElenasList.Android" android:theme="@style/MainTheme"></application>
+	<application android:label="Buddy.aero" android:theme="@style/MainTheme">
+    <meta-data android:name="com.google.firebase.messaging.default_notification_icon" 
+			android:resource="@drawable/ic_launcher"/>
+	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 	<uses-permission android:name="android.permission.CAMERA" />
@@ -13,5 +16,5 @@
 		<intent>
 			<action android:name="android.support.customtabs.action.CustomTabsService" />
 		</intent>
-	</queries>
+	</queries>	
 </manifest>
