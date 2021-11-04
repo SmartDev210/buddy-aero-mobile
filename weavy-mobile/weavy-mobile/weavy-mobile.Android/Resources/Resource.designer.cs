@@ -19128,10 +19128,10 @@ namespace ElenasList.Droid
 			public const int googleg_standard_color_18 = 2131165304;
 			
 			// aapt resource value: 0x7F070081
-			public const int icon_about = 2131165313;
+			public const int icon_home = 2131165313;
 			
 			// aapt resource value: 0x7F070082
-			public const int icon_feed = 2131165314;
+			public const int icon_message = 2131165314;
 			
 			// aapt resource value: 0x7F070079
 			public const int ic_arrow_down_24dp = 2131165305;
@@ -19273,9 +19273,6 @@ namespace ElenasList.Droid
 			
 			// aapt resource value: 0x7F0700A9
 			public const int tooltip_frame_light = 2131165353;
-			
-			// aapt resource value: 0x7F0700AA
-			public const int xamarin_logo = 2131165354;
 			
 			static Drawable()
 			{
