@@ -14,9 +14,21 @@ using Xamarin.Forms.Xaml;
 namespace WeavyMobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty(nameof(Url), "url")]
     public partial class MessengersPage : ContentPage
     {
         private MessengersViewModel viewModel;
+        public string Url
+        {
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    DisplayAlert("url", value, "OK");
+                    weavyMessenger.Load(value);
+                }
+            }
+        }
         public MessengersPage()
         {
             InitializeComponent();

@@ -62,7 +62,17 @@ namespace WeavyMobile.Views
             weavyWebView.LinkClicked += (sender, args) =>
             {
                 Console.WriteLine("Link clicked...", args.Url);
-                Launcher.OpenAsync(args.Url);
+                if (args.Url.Contains("/direct-message") || args.Url.Contains("/message"))
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Shell.Current.GoToAsync($"//MessengerPage?url={args.Url}");
+                        //await Shell.Current.DisplayAlert("", "Failed to login to weavy. Please try again later!", "OK");
+                    });
+                } else
+                {
+                    Launcher.OpenAsync(args.Url);
+                }
             };
 
             // web view has finished loading page

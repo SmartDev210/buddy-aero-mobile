@@ -41,7 +41,7 @@
 
     <TabBar>
         <ShellContent x:Name="spacesTab" Title="App" Icon="icon_home.png" Route="SpacesPage" ContentTemplate="{DataTemplate local:SpacesPage}" />
-        <ShellContent Title="Messenger" Icon="icon_message.png" ContentTemplate="{DataTemplate local:MessengersPage}" />
+        <ShellContent Title="Messenger" Icon="icon_message.png" Route="MessengerPage" ContentTemplate="{DataTemplate local:MessengersPage}" />
     </TabBar>
     
     <!--
