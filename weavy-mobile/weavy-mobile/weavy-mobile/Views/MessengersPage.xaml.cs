@@ -24,11 +24,13 @@ namespace WeavyMobile.Views
             {
                 if (!string.IsNullOrEmpty(value))
                 {
-                    DisplayAlert("url", value, "OK");
-                    weavyMessenger.Load(value);
+                    InitialUrl = value;
+                    if (weavyMessenger.Uri != InitialUrl)
+                        weavyMessenger.Load(InitialUrl);
                 }
             }
         }
+        public string InitialUrl { get; set; }
         public MessengersPage()
         {
             InitializeComponent();
@@ -43,7 +45,14 @@ namespace WeavyMobile.Views
             weavyMessenger.InitCompleted += (sender, args) =>
             {
                 viewModel.IsBusy = true;
-                weavyMessenger.Load($"{Constants.WeavyUrl}/messenger");
+                if (string.IsNullOrEmpty(InitialUrl))
+                {
+                    InitialUrl = $"{Constants.WeavyUrl}/messenger";
+                    weavyMessenger.Load($"{Constants.WeavyUrl}/messenger");
+                } else
+                {
+                    weavyMessenger.Load(InitialUrl);
+                }
             };
 
             weavyMessenger.BadgeUpdated += (sender, args) =>
@@ -63,7 +72,18 @@ namespace WeavyMobile.Views
             weavyMessenger.LinkClicked += (sender, args) =>
             {
                 Console.WriteLine("Link clicked...", args.Url);
-                Launcher.OpenAsync(args.Url);
+                if (args.Url.Contains("/direct-call") || args.Url.Contains("/direct-space"))
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Shell.Current.GoToAsync($"//SpacesPage?url={args.Url}");
+                        //await Shell.Current.DisplayAlert("", "Failed to login to weavy. Please try again later!", "OK");
+                    });
+                }
+                else
+                {
+                    Launcher.OpenAsync(args.Url);
+                }
             };
 
             // web view has finished loading page

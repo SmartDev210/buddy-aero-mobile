@@ -13,10 +13,26 @@ using Xamarin.Forms.Xaml;
 
 namespace WeavyMobile.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]    
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty(nameof(Url), "url")]
     public partial class SpacesPage : ContentPage
     {
         private SpacesViewModel viewModel;
+        public string Url
+        {
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    InitialUrl = value;
+                    if (weavyWebView.Uri != value)
+                    {
+                        weavyWebView.Load(InitialUrl);
+                    }
+                }
+            }
+        }
+        public string InitialUrl { get; set; }
         public SpacesPage()
         {
             InitializeComponent();
@@ -30,7 +46,12 @@ namespace WeavyMobile.Views
             weavyWebView.InitCompleted += (s, a) =>
             {
                 viewModel.IsBusy = true;
-                weavyWebView.Load(Constants.WeavyUrl);
+                if (string.IsNullOrEmpty(InitialUrl))
+                {
+                    InitialUrl = Constants.WeavyUrl;
+                    weavyWebView.Load(Constants.WeavyUrl);
+                }
+                else weavyWebView.Load(InitialUrl);
             };
             
             weavyWebView.SignedOut += async (sender, args) =>
